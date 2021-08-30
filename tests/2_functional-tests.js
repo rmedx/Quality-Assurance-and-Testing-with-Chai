@@ -63,7 +63,7 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
-const { suiteSetup } = require('mocha');
+const { suiteSetup, test } = require('mocha');
 Browser.site = 'https://vast-woodland-00886.herokuapp.com/';
 
 suite('Functional Tests with Zombie.js', function () {
@@ -81,14 +81,16 @@ suite('Functional Tests with Zombie.js', function () {
 
   suite('"Famous Italian Explorers" form', function () {
     // #5
-    test('Submit the surname "Colombo" in the HTML form', function (done) {
-      browser.fill('surname', 'Colombo').then(() => browser.pressButton('submit', () => {
-        browser.assert.success();
-        browser.assert.text('span#name', 'Cristoforo');
-        browser.assert.text('span#surname', 'Colombo');
-        browser.assert.element('span#dates', 1);
-        done();
-      }))
+    test('Submit the surname "Colombo" in the HTML form', (done) => {
+      browser.fill('surname', 'Colombo').then(() => {
+        browser.pressButton('submit', () => {
+          browser.assert.success();
+          browser.assert.text('span#name', 'Cristoforo');
+          browser.assert.text('span#surname', 'Colombo');
+          browser.assert.element('span#dates', 1);
+          done();
+        });
+      });
     });
     // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
