@@ -80,32 +80,29 @@ suite('Functional Tests with Zombie.js', function () {
   });
 
   suite('"Famous Italian Explorers" form', function () {
-    #5
-    test('Submit the surname "Colombo" in the HTML form', (done) => {
-      browser.fill('surname', 'Colombo').then(() => {
+    // #5
+    test('Submit the surname "Colombo" in the HTML form', function (done) {
+      browser.fill('surname', 'Colombo', async () => {
         browser.pressButton('submit', () => {
           browser.assert.success();
           browser.assert.text('span#name', 'Cristoforo');
           browser.assert.text('span#surname', 'Colombo');
           browser.assert.element('span#dates', 1);
-          done();
+          done(); 
         });
-      });
-    });
-    test('submit "surname" : "Colombo" - write your e2e test...', function(done) {
-      browser.fill('surname', 'Colombo').pressButton('submit', function() {
-        browser.assert.success();
-        browser.assert.text('span#name', 'Cristoforo');
-        browser.assert.text('span#surname', 'Colombo');
-        browser.assert.element('span#dates', 1);
-        done(); 
       });
     });
     // #6
     test('Submit the surname "Vespucci" in the HTML form', function (done) {
-      assert.fail();
-
-      done();
+      browser.fill('surname', 'Vespucci', async () => {
+        browser.pressButton('submit', () => {
+          browser.assert.success();
+          browser.assert.text('span#name', 'Amerigo');
+          browser.assert.text('span#surname', 'Vespucci');
+          browser.assert.element('span#dates', 1);
+          done(); 
+        });
+      });
     });
   });
 });
