@@ -63,7 +63,7 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
-const { suiteSetup, test } = require('mocha');
+// const { suiteSetup, test } = require('mocha');
 Browser.site = 'https://vast-woodland-00886.herokuapp.com/';
 
 suite('Functional Tests with Zombie.js', function () {
