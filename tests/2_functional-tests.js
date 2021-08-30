@@ -63,8 +63,10 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
-// const { suiteSetup, test } = require('mocha');
-Browser.site = 'https://vast-woodland-00886.herokuapp.com/';
+const { suiteSetup, test } = require('mocha');
+Browser.site = 'https://protected-crag-39662.herokuapp.com/';
+// Browser.localhost('example.com', process.env.PORT || 3000);
+
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
