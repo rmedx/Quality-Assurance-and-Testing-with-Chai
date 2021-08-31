@@ -63,7 +63,8 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
-Browser.localhost('example.com', process.env.PORT || 3000);
+Browser.site = 'https://protected-crag-39662.herokuapp.com/';
+// Browser.localhost('example.com', process.env.PORT || 3000);
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
